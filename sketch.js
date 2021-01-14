@@ -4,5 +4,5 @@ function setup() {
 
 function draw() {
     background(0);
-    circle(mouseX, mouseY, 20)
+    circle(mouseX, mouseY, 50)
 }

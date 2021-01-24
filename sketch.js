@@ -5,7 +5,7 @@ function setup() {
     createCanvas(windowWidth, windowHeight);
     ship = new Ship();
     for (var i = 0; i < 10; i++)
-        asteroids.push(new Asteroid());
+        asteroids.push(new Asteroid);
 }
 
 function draw() {

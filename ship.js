@@ -25,11 +25,13 @@ function Ship() {
     }
 
     this.render = function() {
+        push();
         noFill();
         stroke(255);
         translate(this.pos.x, this.pos.y);
         rotate(this.heading + PI / 2);
         triangle(-this.r, this.r, this.r, this.r, 0, -this.r);
+        pop();
     };
 
     this.edges = function(){

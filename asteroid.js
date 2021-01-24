@@ -1,3 +1,4 @@
+
 function Asteroid() {
     this.pos = createVector(random(width), random(height))
     this.vel = p5.Vector.random2D();
@@ -29,7 +30,7 @@ function Asteroid() {
         endShape(CLOSE);
         pop();
     }
-this.edges = function () {
+    this.edges = function () {
         if (this.pos.x > width + this.r) {
             this.pos.x = -this.r;
         } else if (this.pos.x < -this.r) {

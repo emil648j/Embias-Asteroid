@@ -4,7 +4,7 @@ var asteroids = [];
 function setup() {
     createCanvas(windowWidth, windowHeight);
     ship = new Ship();
-    for (var i = 0; i < 5; i++)
+    for (var i = 0; i < 10; i++)
         asteroids.push(new Asteroid());
 }
 
@@ -15,8 +15,9 @@ function draw() {
     ship.update();
     ship.edges();
 
-    for (var i = 0; i < asteroids.length; i++)
+    for (var i = 0; i < asteroids.length; i++){
         asteroids[i].render();
+        asteroids[i].update();
 }
 
 
@@ -34,4 +35,4 @@ function keyPressed() {
         ship.boosting(true);
     }
 }
-
+}

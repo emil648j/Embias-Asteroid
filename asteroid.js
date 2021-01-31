@@ -1,12 +1,21 @@
 class Asteroid {
-    constructor() {
-        this.pos = createVector(random(width), random(height))
+    constructor(pos, r) {
+        if (pos){
+            this.pos = pos.copy();
+        } else {
+            this.pos = createVector(random(width), random(height))
+        }
+        if (r){
+            this.r = r*0.5;
+        } else {
+            this.r = random(25, 50);
+        }
+
         this.vel = p5.Vector.random2D();
-        this.r = random(25, 50);
         this.total = floor(random(10, 20));
         this.offset = [];
         for (var i = 0; i < this.total; i++) {
-            this.offset[i] = random(-10, 10);
+            this.offset[i] = random(-this.r*0.5, this.r*0.5);
         }
     }
 
@@ -30,6 +39,13 @@ class Asteroid {
         }
         endShape(CLOSE);
         pop();
+    }
+
+    breakup() {
+        var newA = [];
+        newA[0] = new Asteroid(this.pos, this.r);
+        newA[1] = new Asteroid(this.pos, this.r);
+        return newA;
     }
     edges() {
         if (this.pos.x > width + this.r) {

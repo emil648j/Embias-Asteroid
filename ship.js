@@ -35,7 +35,8 @@ function Ship() {
     this.render = function () {
         push();
         fill(0);
-        stroke(255);
+        strokeWeight(4);
+        stroke(255, 255, 0);
         translate(this.pos.x, this.pos.y);
         rotate(this.heading + PI / 2);
         triangle(-this.r, this.r, this.r, this.r, 0, -this.r);

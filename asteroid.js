@@ -25,7 +25,7 @@ class Asteroid {
 
     render() {
         push();
-        stroke(255);
+        stroke(0, 255, 255);
         noFill();
         translate(this.pos.x, this.pos.y);
 

@@ -1,6 +1,8 @@
 var ship;
 var asteroids = [];
 var lasers = [];
+var hits = 0;
+
 
 function setup() {
     createCanvas(windowWidth, windowHeight);
@@ -10,15 +12,26 @@ function setup() {
 }
 
 function draw() {
+
+
     background(0);
-    
+
     for (var i = 0; i < asteroids.length; i++) {
         if(ship.hits(asteroids[i])){
-            console.log('oops');
+            textSize(50);
+            fill(255);
+            text('*Hit*', windowWidth / 2, windowHeight / 2);
+            fill(0);
+            rect(0, 0, 1000, 100);
+            hits += 1;
+            console.log(hits);
         }
-        asteroids[i].render();
-        asteroids[i].update();
-        asteroids[i].edges();
+       
+            asteroids[i].render();
+            asteroids[i].update();
+            asteroids[i].edges();
+        
+        
     }
 
     for (var i = lasers.length-1; i >= 0; i--) {
@@ -29,7 +42,7 @@ function draw() {
         } else {
         for (var j = asteroids.length-1; j >= 0 ; j--){
             if (lasers[i].hits(asteroids[j])){
-                if (asteroids[j].r > 10){
+                if (asteroids[j].r > 20){
                     var newAsteroids = asteroids[j].breakup();
                     console.log(newAsteroids);
                     asteroids = asteroids.concat(newAsteroids);
@@ -46,7 +59,26 @@ function draw() {
     ship.turn();
     ship.update();
     ship.edges();
+
+    
+        textSize(50);
+        fill(255);
+        text('Asteroids Remaining:', 20, 50);
+        text(asteroids.length, 500, 50);
+    
+    
+    if(asteroids.length == 0){
+        textSize(50);
+        fill(255);
+        text('You Won.', windowWidth / 2, windowHeight / 2);
+        fill(0);
+        rect(0, 0, 1000, 100);
+
+    
+    }
+    
 }
+
 
 function keyReleased() {
     ship.setRotation(0);
@@ -65,3 +97,4 @@ function keyPressed() {
         ship.boosting(true);
     }
 }
+
